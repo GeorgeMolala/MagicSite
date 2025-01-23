@@ -29,7 +29,7 @@ namespace MagicSite.Data.Repositories.DataRepository
             parameters.Add("Image_Url", entity.Image_Url, DbType.String);
 
             using (var connection = _con.CreateConnection())
-            {
+        {
 
                 connection.Open();
 

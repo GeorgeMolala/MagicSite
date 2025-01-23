@@ -19,6 +19,7 @@ namespace MagicSite.Data.Repositories.DataRepository
             throw new NotImplementedException();
         }
 
+        public IEnumerable<BrandTbl> GetAll()
         public Task<IEnumerable<BrandTbl>> GetAll()
         {
             throw new NotImplementedException();
@@ -29,7 +30,6 @@ namespace MagicSite.Data.Repositories.DataRepository
             throw new NotImplementedException();
         }
 
-        public Task<int> SoftDelete(int ID)
         {
             throw new NotImplementedException();
         }

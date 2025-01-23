@@ -70,7 +70,7 @@ namespace MagicSite.Data.Repositories.DataRepository
             string StoredProcedureName = "GetAllProduct_PDO";
 
             using (var connection = _con.CreateConnection())
-            {
+        {
                 connection.Open();
 
                 var res = await connection.QueryAsync<ProductTbl>(StoredProcedureName, commandType: CommandType.StoredProcedure);
@@ -88,7 +88,7 @@ namespace MagicSite.Data.Repositories.DataRepository
             string StoredProcedureName = "GetByIDProuct_PDO";
 
             using (var connection = _con.CreateConnection())
-            {
+        {
                 var parameters = new DynamicParameters();
                 parameters.Add("ID", ID, DbType.Int32);
 
@@ -99,7 +99,7 @@ namespace MagicSite.Data.Repositories.DataRepository
                 connection.Close();
                 return res;
 
-            }
+        }
         }
 
         public async Task<int> SoftDelete(int ID)
