@@ -17,4 +17,10 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Data\Repositories\DataRepository\" />
+    <Folder Include="Data\Repositories\Generic-Products\" />
+    <Folder Include="Data\Repositories\Helper-Classes\" />
+  </ItemGroup>
+
 </Project>
