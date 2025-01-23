@@ -23,7 +23,19 @@ namespace MagicSite
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+         services.AddCors(options =>
+         options.AddPolicy("MyAllowedCORS", policy =>
+         {
+
+             policy.WithOrigins("http://localhost:44369").AllowAnyHeader().AllowAnyMethod().AllowCredentials().SetIsOriginAllowed((host) => true);
+         })
+         );
+
             services.AddControllersWithViews();
+            services.AddControllers();
+           
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
