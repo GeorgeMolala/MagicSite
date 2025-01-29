@@ -15,7 +15,7 @@ namespace MagicSite.Models
 
         public string ProdDescription { get; set; }
 
-        public string ProdPrice { get; set; }
+        public double ProdPrice { get; set; }
 
         public int Cat_ID { get; set; }
 

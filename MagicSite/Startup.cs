@@ -1,9 +1,12 @@
+using MagicSite.Data;
+using MagicSite.Data.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,13 +31,20 @@ namespace MagicSite
          options.AddPolicy("MyAllowedCORS", policy =>
          {
 
-             policy.WithOrigins("http://localhost:44369").AllowAnyHeader().AllowAnyMethod().AllowCredentials().SetIsOriginAllowed((host) => true);
+             policy.WithOrigins("http://localhost:44304").AllowAnyHeader().AllowAnyMethod().AllowCredentials().SetIsOriginAllowed((host) => true);
          })
          );
 
+          //  services.AddDbContext<EndorsedContextDb>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddControllersWithViews();
             services.AddControllers();
-           
+            services.AddSingleton<DataBaseConnection>();
+            services.AppService();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApplication1", Version = "v1" });
+            });
 
         }
 
@@ -44,6 +54,8 @@ namespace MagicSite
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApplication1 v1"));
             }
             else
             {
@@ -56,14 +68,20 @@ namespace MagicSite
 
             app.UseRouting();
 
+            app.UseCors("MyAllowedCORS");
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-            });
+                //    endpoints.MapControllerRoute(
+                //        name: "default",
+                //        pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                            endpoints.MapControllers();
+                });
+
+                
         }
     }
 }
