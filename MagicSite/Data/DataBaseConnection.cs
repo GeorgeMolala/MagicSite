@@ -17,7 +17,7 @@ namespace MagicSite.Data
         {
             _config = config;
             _con = _config.GetConnectionString("DefaultConnection");
-           // CreateConnection();
+   
         }
 
         public IDbConnection CreateConnection() => new SqlConnection(_con);

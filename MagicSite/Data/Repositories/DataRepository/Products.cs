@@ -23,7 +23,7 @@ namespace MagicSite.Data.Repositories.DataRepository
             _con = con;
         }        
 
-        public  Task<int> Add(ProductTbl entity)
+        public Task<int> Add(ProductTbl entity)
         {
 
             string ProcedureName = "AddProduct_PDO";
@@ -42,9 +42,15 @@ namespace MagicSite.Data.Repositories.DataRepository
             using (var connection = _con.CreateConnection())
             {
 
+                connection.Open();
 
-               var ress = connection.QueryAsync(ProcedureName, parameters, commandType: CommandType.StoredProcedure);
-                return ress;
+                var tesr = connection.State;
+
+               var ress = connection.Execute(ProcedureName, parameters, commandType: CommandType.StoredProcedure);
+
+                return Task.FromResult(ress);
+                    
+
             }
 
             

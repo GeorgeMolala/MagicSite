@@ -31,13 +31,13 @@ namespace MagicSite.Controllers
 
 
         [HttpPost]
-        public Task<int> AddProduct(ProductTbl product)
+        public async Task<ActionResult> AddProduct(ProductTbl product)
         {
 
-            var resp = _products.Add(product);
+            var resp = await _products.Add(product);
             var t = 12;
 
-            return resp;
+            return Ok();
         }
 
         [HttpGet]
