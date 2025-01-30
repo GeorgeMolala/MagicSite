@@ -46,7 +46,7 @@ namespace MagicSite.Data.Repositories.DataRepository
 
                 var tesr = connection.State;
 
-               var ress = connection.Execute(ProcedureName, parameters, commandType: CommandType.StoredProcedure);
+                var ress = connection.Execute(ProcedureName, parameters, commandType: CommandType.StoredProcedure);
 
                 return Task.FromResult(ress);
                     
@@ -80,7 +80,33 @@ namespace MagicSite.Data.Repositories.DataRepository
 
         public Task<int> Update(ProductTbl entity)
         {
-            throw new NotImplementedException();
+            string ProcedureName = "UpdateProduct_PDO";
+
+
+            var parameters = new DynamicParameters();
+            parameters.Add("Prod_ID", entity.Prod_ID, DbType.Int32);
+            parameters.Add("ProdName", entity.ProdName, DbType.String);
+            parameters.Add("ProdDescription", entity.ProdDescription, DbType.String);
+            parameters.Add("ProdPrice", entity.ProdPrice, DbType.Double);
+            parameters.Add("Cat_ID", entity.Cat_ID, DbType.Int32);
+            parameters.Add("ProdSize", entity.ProdSize, DbType.String);
+            parameters.Add("Color_ID", entity.Color_ID, DbType.Int32);
+            parameters.Add("Brand_ID", entity.Brand_ID, DbType.Int32);
+
+            using (var connection = _con.CreateConnection())
+            {
+
+                connection.Open();
+
+                var tesr = connection.State;
+
+                var ress = connection.Execute(ProcedureName, parameters, commandType: CommandType.StoredProcedure);
+
+                return Task.FromResult(ress);
+
+
+            }
+
         }
     }
 }
