@@ -40,6 +40,15 @@ namespace MagicSite.Controllers
             return Ok();
         }
 
+
+        [HttpPut]
+        public async Task<ActionResult> UpdateProduct(ProductTbl product)
+        {
+            var resp = await _products.Update(product);
+
+            return Ok();
+        }
+
         [HttpGet]
         public IActionResult Privacy()
         {
