@@ -9,7 +9,7 @@ namespace MagicSite.Data.Repositories.Helper_Classes
 {
     public interface IProduct: IAppRep<ProductTbl>
     {
-        Task<int> SoftDelete(int ID);
+        Task<int> SoftDelete(ProductTbl product);
 
     }
 }

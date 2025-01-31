@@ -9,6 +9,6 @@ namespace MagicSite.Data.Repositories.Helper_Classes
 {
     public interface ICategory:IAppRep<CategoryTbl>
     {
-        Task<int> SoftDelete(int ID);
+        Task<int> SoftDelete(CategoryTbl category);
     }
 }
