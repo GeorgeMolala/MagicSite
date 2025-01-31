@@ -9,7 +9,7 @@ namespace MagicSite.Data.Repositories.Helper_Classes
 {
     public interface IBrand : IAppRep<BrandTbl>
     {
-        Task<int> SoftDelete(BrandTbl brand);
+        Task<int> SoftDelete(int ID);
 
     }
 }

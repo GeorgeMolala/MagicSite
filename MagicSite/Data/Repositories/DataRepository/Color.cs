@@ -29,7 +29,7 @@ namespace MagicSite.Data.Repositories.DataRepository
             throw new NotImplementedException();
         }
 
-        public Task<int> SoftDelete(ColorTbl color)
+        public Task<int> SoftDelete(int ID)
         {
             throw new NotImplementedException();
         }
