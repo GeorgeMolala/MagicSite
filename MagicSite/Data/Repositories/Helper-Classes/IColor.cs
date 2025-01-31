@@ -9,6 +9,6 @@ namespace MagicSite.Data.Repositories.Helper_Classes
 {
     public interface IColor : IAppRep<ColorTbl>
     {
-        Task<int> SoftDelete(ColorTbl color);
+        Task<int> SoftDelete(int ID);
     }
 }

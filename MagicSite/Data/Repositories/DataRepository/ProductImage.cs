@@ -36,7 +36,7 @@ namespace MagicSite.Data.Repositories.DataRepository
             throw new NotImplementedException();
         }
 
-        public Task<int> SoftDelete(Prod_ImageTbl image)
+        public Task<int> SoftDelete(int ID)
         {
             throw new NotImplementedException();
         }

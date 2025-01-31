@@ -9,6 +9,6 @@ namespace MagicSite.Data.Repositories.Helper_Classes
 {
     public interface IProdImage:IAppRep<Prod_ImageTbl>
     {
-        Task<int> SoftDelete(Prod_ImageTbl image);
+        Task<int> SoftDelete(int ID);
     }
 }

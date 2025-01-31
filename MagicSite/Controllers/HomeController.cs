@@ -52,6 +52,28 @@ namespace MagicSite.Controllers
             return Ok();
         }
 
+        public async Task<ActionResult> SoftDeleteProduct(int ID)
+        {
+            var resp = await _unit.Products.SoftDelete(ID);
+
+            return Ok();
+        }
+
+        public async Task<ActionResult> GetByProduct(int ID)
+        {
+            var resp = await _unit.Products.GetByID(ID);
+
+            return Ok(resp);
+        }
+
+        public IEnumerable<ProductTbl> GetAllProduct()
+        {
+
+            var resp =   _unit.Products.GetAll().ToList();
+
+            return resp;
+        }
+
         [HttpGet]
         public IActionResult Privacy()
         {
