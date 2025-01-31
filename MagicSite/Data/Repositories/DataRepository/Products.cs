@@ -49,6 +49,7 @@ namespace MagicSite.Data.Repositories.DataRepository
 
                 var ress = connection.Execute(ProcedureName, parameters, commandType: CommandType.StoredProcedure);
 
+                connection.Close();
                 return Task.FromResult(ress);
                     
 
@@ -66,17 +67,58 @@ namespace MagicSite.Data.Repositories.DataRepository
 
         public IEnumerable<ProductTbl> GetAll()
         {
-            throw new NotImplementedException();
+            string StoredProcedureName = "GetAllProduct.PDO";
+
+            using (var connection = _con.CreateConnection())
+            {
+                connection.Open();
+
+                var res =  connection.QueryAsync(StoredProcedureName, commandType: CommandType.StoredProcedure);
+
+                connection.Close();
+
+                return (IEnumerable<ProductTbl>)res;
+               
+            }
         }
 
-        public Task<ProductTbl> GetByID(int ID)
+        public async Task<ProductTbl> GetByID(int ID)
         {
-            throw new NotImplementedException();
+            string StoredProcedureName = "GetByIDProuct.PDO";
+
+            using (var connection = _con.CreateConnection())
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("ID", ID, DbType.Int32);
+
+                connection.Open();
+
+                var res = await connection.QueryFirstAsync(StoredProcedureName,parameters, commandType:CommandType.StoredProcedure);
+
+                connection.Close();
+                return Task.FromResult(res);
+
+            }
         }
 
-        public Task<int> SoftDelete(ProductTbl product)
+        public async Task<int> SoftDelete(int ID)
         {
-            throw new NotImplementedException();
+            string StoredProcedureName = "SoftDeleteProduct.PDO";
+
+            using (var connection = _con.CreateConnection())
+            {
+                connection.Open();
+
+                var parameters = new DynamicParameters();
+                parameters.Add("ID", ID, DbType.Int32);
+
+
+                var resp = connection.ExecuteAsync(StoredProcedureName, parameters,commandType:CommandType.StoredProcedure);
+                connection.Close();
+
+                return await resp;
+            }
+            
         }
 
         public Task<int> Update(ProductTbl entity)
@@ -104,6 +146,7 @@ namespace MagicSite.Data.Repositories.DataRepository
 
                 var ress = connection.Execute(ProcedureName, parameters, commandType: CommandType.StoredProcedure);
 
+                connection.Close();
                 return Task.FromResult(ress);
 
 
