@@ -52,6 +52,7 @@ namespace MagicSite.Controllers
             return Ok();
         }
 
+        [HttpDelete]
         public async Task<ActionResult> SoftDeleteProduct(int ID)
         {
             var resp = await _unit.Products.SoftDelete(ID);
@@ -59,13 +60,15 @@ namespace MagicSite.Controllers
             return Ok();
         }
 
-        public async Task<ActionResult> GetByProduct(int ID)
+        [HttpGet]
+        public async Task<ProductTbl> GetByProduct(int ID)
         {
             var resp = await _unit.Products.GetByID(ID);
 
-            return Ok(resp);
+            return resp;
         }
 
+        [HttpGet]
         public IEnumerable<ProductTbl> GetAllProduct()
         {
 
