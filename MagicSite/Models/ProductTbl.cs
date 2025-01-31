@@ -26,6 +26,8 @@ namespace MagicSite.Models
 
         public int Brand_ID { get; set; }
 
+        public string Status { get; set; }
+
 
     }
 }

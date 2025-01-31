@@ -1,5 +1,6 @@
 ﻿using MagicSite.Data.Repositories.DataRepository;
 using MagicSite.Data.Repositories.Helper_Classes;
+using MagicSite.Data.UnitOfWork;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,12 @@ namespace MagicSite.Data.Services
 
             //service.AddSingleton<DataBaseConnection>();
             service.AddTransient<IProduct, Products>();
+            service.AddTransient<IBrand, Brand>();
+            service.AddTransient<ICategory, Category>();
+            service.AddTransient<IColor, Color>();
+            service.AddTransient<IProdImage, ProductImage>();
+            
+            service.AddTransient<IUnitOfWork, UnitOfWorkHelper>();
         }
 
     }

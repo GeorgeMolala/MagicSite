@@ -1,4 +1,5 @@
 ﻿using MagicSite.Data.Repositories.Helper_Classes;
+using MagicSite.Data.UnitOfWork;
 using MagicSite.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -15,12 +16,13 @@ namespace MagicSite.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private IProduct _products;
-
-        public HomeController(ILogger<HomeController> logger, IProduct products)
+        // private IProduct _products;
+        private readonly IUnitOfWork _unit;
+        public HomeController(ILogger<HomeController> logger, IUnitOfWork unit)
         {
             _logger = logger;
-            _products = products;
+            //  _products = products;
+            _unit = unit;
         }
 
         [HttpGet]
@@ -34,7 +36,8 @@ namespace MagicSite.Controllers
         public async Task<ActionResult> AddProduct(ProductTbl product)
         {
 
-            var resp = await _products.Add(product);
+            // var resp = await _products.Add(product);
+            var resp = await _unit.Products.Add(product);
             var t = 12;
 
             return Ok();
@@ -44,8 +47,8 @@ namespace MagicSite.Controllers
         [HttpPut]
         public async Task<ActionResult> UpdateProduct(ProductTbl product)
         {
-            var resp = await _products.Update(product);
-
+            //  var resp = await _products.Update(product);
+            var resp = await _unit.Products.Update(product);
             return Ok();
         }
 

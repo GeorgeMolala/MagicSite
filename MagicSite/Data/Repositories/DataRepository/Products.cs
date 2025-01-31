@@ -38,6 +38,7 @@ namespace MagicSite.Data.Repositories.DataRepository
             parameters.Add("ProdSize", entity.ProdSize, DbType.String);
             parameters.Add("Color_ID", entity.Color_ID, DbType.Int32);
             parameters.Add("Brand_ID", entity.Brand_ID, DbType.Int32);
+            parameters.Add("Status", entity.Status = "Active", DbType.String);
 
             using (var connection = _con.CreateConnection())
             {
@@ -92,6 +93,7 @@ namespace MagicSite.Data.Repositories.DataRepository
             parameters.Add("ProdSize", entity.ProdSize, DbType.String);
             parameters.Add("Color_ID", entity.Color_ID, DbType.Int32);
             parameters.Add("Brand_ID", entity.Brand_ID, DbType.Int32);
+            parameters.Add("Status", entity.Status = "Active", DbType.String);
 
             using (var connection = _con.CreateConnection())
             {
