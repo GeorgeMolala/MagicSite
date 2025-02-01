@@ -8,7 +8,7 @@ namespace MagicSite.Data.Repositories.Generic_Products
     public interface IAppRep <T> where T:class
     {
 
-        IEnumerable<T> GetAll();
+        Task<IEnumerable<T>> GetAll();
 
         Task<T> GetByID(int ID);
 

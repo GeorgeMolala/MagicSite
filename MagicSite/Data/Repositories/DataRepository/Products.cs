@@ -65,7 +65,7 @@ namespace MagicSite.Data.Repositories.DataRepository
             throw new NotImplementedException();
         }
 
-        public IEnumerable<ProductTbl> GetAll()
+        public async Task<IEnumerable<ProductTbl>> GetAll()
         {
             string StoredProcedureName = "GetAllProduct_PDO";
 
@@ -73,11 +73,12 @@ namespace MagicSite.Data.Repositories.DataRepository
             {
                 connection.Open();
 
-                var res =  connection.QueryAsync(StoredProcedureName, commandType: CommandType.StoredProcedure);
+                var res = await connection.QueryAsync<ProductTbl>(StoredProcedureName, commandType: CommandType.StoredProcedure);
 
                 connection.Close();
 
-                return (IEnumerable<ProductTbl>)res;
+                
+                return res.ToList();
                
             }
         }
@@ -93,7 +94,7 @@ namespace MagicSite.Data.Repositories.DataRepository
 
                 connection.Open();
 
-                var res = await connection.QueryFirstAsync(StoredProcedureName,parameters, commandType:CommandType.StoredProcedure);
+                var res = await connection.QueryFirstAsync<ProductTbl>(StoredProcedureName,parameters, commandType:CommandType.StoredProcedure);
 
                 connection.Close();
                 return res;

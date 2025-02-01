@@ -69,10 +69,10 @@ namespace MagicSite.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<ProductTbl> GetAllProduct()
+        public Task<IEnumerable<ProductTbl>> GetAllProduct()
         {
 
-            var resp =   _unit.Products.GetAll().ToList();
+            var resp =   _unit.Products.GetAll();
 
             return resp;
         }

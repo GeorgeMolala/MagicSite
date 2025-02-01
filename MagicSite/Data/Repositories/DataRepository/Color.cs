@@ -19,7 +19,7 @@ namespace MagicSite.Data.Repositories.DataRepository
             throw new NotImplementedException();
         }
 
-        public IEnumerable<ColorTbl> GetAll()
+        public Task<IEnumerable<ColorTbl>> GetAll()
         {
             throw new NotImplementedException();
         }

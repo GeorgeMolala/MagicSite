@@ -21,7 +21,7 @@ namespace MagicSite.Data.Repositories.DataRepository
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Prod_ImageTbl> GetAll()
+        public Task<IEnumerable<Prod_ImageTbl>> GetAll()
         {
             throw new NotImplementedException();
         }
