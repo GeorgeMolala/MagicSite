@@ -35,46 +35,93 @@ namespace MagicSite.Controllers
         [HttpPost]
         public async Task<ActionResult> AddProduct(ProductTbl product)
         {
+            try
+            {
+                var resp = await _unit.Products.Add(product);
+                 var t = 12;
+                return Ok();
+            }
+            catch
+            {
+                return StatusCode(500);
+            }
+            
 
-            // var resp = await _products.Add(product);
-            var resp = await _unit.Products.Add(product);
-            var t = 12;
-
-            return Ok();
+          
         }
 
 
         [HttpPut]
         public async Task<ActionResult> UpdateProduct(ProductTbl product)
         {
-            //  var resp = await _products.Update(product);
-            var resp = await _unit.Products.Update(product);
-            return Ok();
+            try
+            {
+                var resp = await _unit.Products.Update(product);
+                return Ok();
+            }
+            catch
+            {
+                return StatusCode(500);
+            }
+           
         }
 
         [HttpDelete]
         public async Task<ActionResult> SoftDeleteProduct(int ID)
         {
-            var resp = await _unit.Products.SoftDelete(ID);
+            try
+            {
+                var resp = await _unit.Products.SoftDelete(ID);
 
-            return Ok();
+                return Ok();
+            }
+            catch
+            {
+                new ApplicationException("Something went wrong");
+
+                return StatusCode(500);
+            }
+           
         }
 
         [HttpGet]
-        public async Task<ProductTbl> GetByProduct(int ID)
+        public async Task<ActionResult<ProductTbl>> GetByProduct(int ID)
         {
-            var resp = await _unit.Products.GetByID(ID);
+            try
+            {
+                var resp = await _unit.Products.GetByID(ID);
 
-            return resp;
+                return resp;
+            }
+            catch
+            {
+
+                new ApplicationException("Something went wrong");
+
+                return StatusCode(404);
+
+            }
+
+            return StatusCode(500);
+
         }
 
         [HttpGet]
-        public Task<IEnumerable<ProductTbl>> GetAllProduct()
+        public async Task<ActionResult<IEnumerable<ProductTbl>>> GetAllProduct()
         {
 
-            var resp =   _unit.Products.GetAll();
+            try
+            {
+                var resp = await  _unit.Products.GetAll();
 
-            return resp;
+                  return resp.ToList();
+            }
+            catch
+            {
+                new ApplicationException("Something went wrong");
+                return StatusCode(500);
+            }
+           
         }
 
         [HttpGet]

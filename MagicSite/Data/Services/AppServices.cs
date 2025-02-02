@@ -11,6 +11,7 @@ namespace MagicSite.Data.Services
 {
     public static class AppServices
     {
+
         public static void AppService(this IServiceCollection service)
         {
 
@@ -23,6 +24,7 @@ namespace MagicSite.Data.Services
             
             service.AddTransient<IUnitOfWork, UnitOfWorkHelper>();
         }
+
 
     }
 }
