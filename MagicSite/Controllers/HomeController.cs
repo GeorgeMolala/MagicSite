@@ -112,7 +112,7 @@ namespace MagicSite.Controllers
 
             try
             {
-                var resp = await  _unit.Products.GetAll();
+                  var resp = await  _unit.Products.GetAll();
 
                   return resp.ToList();
             }
