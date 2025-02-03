@@ -20,4 +20,16 @@
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="AppImages\Adult\Men\Shoes\Formal\" />
+    <Folder Include="AppImages\Adult\Men\Shoes\Sandals\" />
+    <Folder Include="AppImages\Adult\Men\Shoes\Sneakers\" />
+    <Folder Include="AppImages\Adult\Women\Dresses\" />
+    <Folder Include="AppImages\Adult\Women\Weaves\" />
+    <Folder Include="AppImages\Adult\Women\Shoes\Heels\" />
+    <Folder Include="AppImages\Adult\Women\Shoes\Sandals\" />
+    <Folder Include="AppImages\Adult\Women\Shoes\Sneakers\" />
+    <Folder Include="AppImages\Kids\" />
+  </ItemGroup>
+
 </Project>
