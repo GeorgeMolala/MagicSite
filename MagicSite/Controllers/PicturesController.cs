@@ -11,8 +11,8 @@ using System.Threading.Tasks;
 
 namespace MagicSite.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
+    //[Route("[controller]/[action]")]
+    //[ApiController]
     public class PicturesController : Controller
     {
         private readonly IUnitOfWork _unit;
@@ -24,21 +24,30 @@ namespace MagicSite.Controllers
             _config = config;
         }
 
+
         [HttpGet]
-        public async Task<ActionResult> AddImage(Prod_ImageTbl image)
+        public IActionResult AddingProducts()
+        {
+            return View();
+        }
+
+        [IgnoreAntiforgeryToken]
+        [HttpPost]
+        public async Task<ActionResult> AddImage(Prod_ImageTbl ProImage)
         {
 
-            var MaxSize = _config.GetValue<long>("ImageUploads: AllowedMaxSize");
-
+            var MaxSize = _config.GetValue<long>("ImageUploads:AllowedMaxSize");
+            var l1 = _config["ImageUploads: AllowedMaxSize"];
+            
             //Checking if variable is not empty basically it is validation.
-           if(image.image == null || image.image.Length == 0)
+           if(ProImage.Form == null || ProImage.Form.Length == 0)
             {
                 throw new ArgumentException("No File uploaded");
             }
 
 
            //Checking File SIze
-            if (image.image.Length > MaxSize)
+            if (ProImage.Form.Length > MaxSize)
             {
                 throw new ArgumentException("File too large");
             }
@@ -47,7 +56,7 @@ namespace MagicSite.Controllers
             //Checking file extention to ensure it is an Image
             var allowedExtentions = _config.GetValue<string>("ImageUploads:FileExtentions").Split(", ");
             
-            var GetExtention = Path.GetExtension(image.image.FileName).ToLower();
+            var GetExtention = Path.GetExtension(ProImage.Form.FileName).ToLower();
 
             if (!allowedExtentions.Contains(GetExtention))
             {
@@ -61,10 +70,10 @@ namespace MagicSite.Controllers
             var UploadPath = _config["ImageUploads:UploadPathMenShoes"];
 
             //Generate unique name
-            var UniqueName = Guid.NewGuid().ToString() +image.image.FileName + GetExtention;
+            var UniqueName = Guid.NewGuid().ToString() +ProImage.Form.FileName + GetExtention;
             var filePath = Path.Combine(UploadPath, UniqueName);
 
-            var file = image.image;
+            var file = ProImage.Form;
             //uploading image
             using (var stream = new FileStream(filePath, FileMode.Create))
             {
@@ -73,9 +82,10 @@ namespace MagicSite.Controllers
 
 
             //Uploading details to Database
-            image.Image_Url = filePath;
+            ProImage.Image_Url = filePath;
 
-            var resp = _unit.ProdImage.Add(image);
+            ProImage.Prod_Image_ID = 2;
+            var resp = _unit.ProdImage.Add(ProImage);
 
             return Ok();
         }

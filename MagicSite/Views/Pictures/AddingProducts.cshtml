@@ -1,0 +1,40 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model Prod_ImageTbl
+
+@{
+   
+}
+
+<title>Adding Image</title>
+
+<form asp-controller="Pictures" asp-action="AddImage" method="post" enctype="multipart/form-data">
+
+    <div>
+        <div class="Name">
+            <label asp-for="ImageName">Image Name</label>
+            <input type="text" asp-for="ImageName"></input>
+        </div>
+
+        <br />
+
+        <div class="ProductID">
+            <lable asp-for="Prod_ID" >Product ID</lable>
+            <input type="number" asp-for="Prod_ID"> </input>
+        </div>
+
+        <br />
+
+        <div class="Image">
+            <label asp-for="Form">Image File</label>
+            <input type="file" asp-for="Form"/>
+        </div>
+
+        <br />
+
+        <button type="submit">Add</button>
+    </div>
+
+</form>
