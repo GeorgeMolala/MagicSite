@@ -18,20 +18,24 @@ namespace MagicSite.Data.Repositories.DataRepository
             _con = con;
         }
 
-        public Task<int> Add(Prod_ImageTbl entity)
+        public async Task<int> Add(Prod_ImageTbl entity)
         {
            var StoredProcedure = "AddProductImage_PDO";
 
-            using(var connection = _con.CreateConnection())
+            var parameters = new DynamicParameters();
+           // parameters.Add("Prod_Image_ID", entity.Prod_Image_ID, DbType.Int32);
+            parameters.Add("Prod_ID", entity.Prod_ID, DbType.Int32);
+            parameters.Add("ImageName", entity.ImageName, DbType.String);
+            parameters.Add("Image_Url", entity.Image_Url, DbType.String);
+
+            using (var connection = _con.CreateConnection())
             {
-                var parameters = new DynamicParameters();
-                parameters.Add("Prod_Image_ID", entity.Prod_Image_ID, DbType.Int32);
-                parameters.Add("Prod_ID", entity.Prod_ID, DbType.Int32);
-                parameters.Add("ImageName", entity.ImageName, DbType.String);
-                parameters.Add("Image_Url", entity.Image_Url, DbType.String);
 
+                connection.Open();
 
-                var resp = connection.ExecuteAsync(StoredProcedure, parameters, commandType:CommandType.StoredProcedure);
+                var resp = await connection.ExecuteAsync(StoredProcedure, parameters, commandType:CommandType.StoredProcedure);
+
+                connection.Close();
 
                 return resp;
             }

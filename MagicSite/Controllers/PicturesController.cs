@@ -80,13 +80,13 @@ namespace MagicSite.Controllers
                 await file.CopyToAsync(stream);
             }
 
-
+            
             //Uploading details to Database
             ProImage.Image_Url = filePath;
 
-            ProImage.Prod_Image_ID = 2;
+           // ProImage.Prod_Image_ID = 4;
             var resp = _unit.ProdImage.Add(ProImage);
-
+           
             return Ok();
         }
     }
