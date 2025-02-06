@@ -89,5 +89,16 @@ namespace MagicSite.Controllers
            
             return Ok();
         }
+
+        [IgnoreAntiforgeryToken]
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Prod_ImageTbl>>> GetAllByID() //Pass INT ID
+        {
+            int ID = 6;
+
+            var resp = await _unit.ProdImage.GetAllByID(ID);
+
+            return  View(resp.ToList());
+        } 
     }
 }

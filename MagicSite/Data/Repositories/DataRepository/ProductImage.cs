@@ -53,9 +53,12 @@ namespace MagicSite.Data.Repositories.DataRepository
             throw new NotImplementedException();
         }
 
-        public Task<Prod_ImageTbl> GetByID(int ID)
+        public async Task<Prod_ImageTbl> GetByID(int ID)
         {
-            throw new NotImplementedException();
+
+          
+
+                throw new NotImplementedException();
         }
 
         public Task<int> Update(Prod_ImageTbl entity)
@@ -66,6 +69,27 @@ namespace MagicSite.Data.Repositories.DataRepository
         public Task<int> SoftDelete(int ID)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<IEnumerable<Prod_ImageTbl>> GetAllByID(int ID)
+        {
+            var StoredProcedure = "GetImageByID_PDO";
+
+            var parameters = new DynamicParameters();
+            parameters.Add("ID", ID, DbType.Int32);
+
+            using (var connection = _con.CreateConnection())
+            {
+                connection.Open();
+
+               
+                var res = await connection.QueryAsync<Prod_ImageTbl>(StoredProcedure, parameters, commandType: CommandType.StoredProcedure);
+                
+                connection.Close();
+
+                return res.ToList();
+            }
+            
         }
     }
 }

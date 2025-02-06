@@ -10,7 +10,7 @@
 
 <title>Adding Image</title>
 
-<form asp-controller="Pictures" asp-action="AddImage" method="post" enctype="multipart/form-data">
+<form asp-controller="Pictures"  method="post" enctype="multipart/form-data">
 
     <div>
         <div class="Name">
@@ -34,7 +34,18 @@
 
         <br />
 
-        <button type="submit">Add</button>
+        <button type="submit" asp-action="AddImage">Add</button>
+    </div>
+    <br />
+    <br />
+    <br />
+
+    <div class="ImageList">
+        <div>
+            <label >Product ID</label>
+            <br />
+            <button type="submit" asp-action="GetAllByID" >View Pics</button>
+        </div>
     </div>
 
 </form>

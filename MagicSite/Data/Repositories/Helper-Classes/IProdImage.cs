@@ -10,5 +10,6 @@ namespace MagicSite.Data.Repositories.Helper_Classes
     public interface IProdImage:IAppRep<Prod_ImageTbl>
     {
         Task<int> SoftDelete(int ID);
+        Task<IEnumerable<Prod_ImageTbl>> GetAllByID(int ID);
     }
 }
