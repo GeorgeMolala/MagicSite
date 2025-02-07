@@ -6,6 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\AppImages\c8cb0941-83dc-41ce-b757-cbe576251c76DeletePharmacy.PNG.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Dapper" Version="2.0.4" />
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.0" />
@@ -30,6 +34,13 @@
     <Folder Include="AppImages\Adult\Women\Shoes\Sandals\" />
     <Folder Include="AppImages\Adult\Women\Shoes\Sneakers\" />
     <Folder Include="AppImages\Kids\" />
+    <Folder Include="wwwroot\AppImages\Adults\Ladies\" />
+    <Folder Include="wwwroot\AppImages\Adults\Men\Shoes\" />
+    <Folder Include="wwwroot\AppImages\Kids\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\AppImages\c8cb0941-83dc-41ce-b757-cbe576251c76DeletePharmacy.PNG.png" />
   </ItemGroup>
 
 </Project>

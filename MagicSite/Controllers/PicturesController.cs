@@ -67,7 +67,7 @@ namespace MagicSite.Controllers
 
             //Prepare URL
             // var uploadPath = Path.Combine(_config[""])
-            var UploadPath = _config["ImageUploads:UploadPathMenShoes"];
+            var UploadPath = "wwwroot/"+_config["ImageUploads:UploadPathMenShoes"];
 
             //Generate unique name
             var UniqueName = Guid.NewGuid().ToString() +ProImage.Form.FileName + GetExtention;
@@ -80,9 +80,10 @@ namespace MagicSite.Controllers
                 await file.CopyToAsync(stream);
             }
 
-            
+
             //Uploading details to Database
-            ProImage.Image_Url = filePath;
+            var storageURL = Path.Combine(_config["ImageUploads:UploadPathMenShoes"], UniqueName);
+            ProImage.Image_Url = storageURL;
 
            // ProImage.Prod_Image_ID = 4;
             var resp = _unit.ProdImage.Add(ProImage);
