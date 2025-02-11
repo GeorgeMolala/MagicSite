@@ -74,12 +74,34 @@ namespace MagicSite
 
             app.UseEndpoints(endpoints =>
             {
+                  //Default Route
                    endpoints.MapControllerRoute(
                        name: "default",
-                        pattern: "{controller=Pictures}/{action=AddingProducts}/{id?}");
+                        pattern: "{controller=Home}/{action=Index}/{id?}");
 
-                            endpoints.MapControllers();
-                });
+                //Consumer Route
+                endpoints.MapAreaControllerRoute(
+                    name: "Consumer",
+                    areaName: "Consumer",
+                    pattern: "{controller=Consumers}/{action=Index}/{id?}");
+
+
+                //Shop Owner Route
+                endpoints.MapAreaControllerRoute(
+                    name: "Shop",
+                    areaName: "Shop",
+                    pattern: "{controller=Shops}/{action=Index}/{id?}");
+
+                //SiteAdmin Route
+                endpoints.MapAreaControllerRoute(
+                    name: "SiteOwner",
+                    areaName: "SiteAdmin",
+                    pattern: "{controller=SiteOwners}/{action=Index}/{id?}");
+
+
+                //Web API Exposure
+                endpoints.MapControllers();
+            });
 
                 
         }
