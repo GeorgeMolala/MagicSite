@@ -27,6 +27,8 @@ namespace MagicSite
         public void ConfigureServices(IServiceCollection services)
         {
 
+         services.AddRouting(options => options.LowercaseUrls = true);
+
          services.AddCors(options =>
          options.AddPolicy("MyAllowedCORS", policy =>
          {
@@ -74,30 +76,32 @@ namespace MagicSite
 
             app.UseEndpoints(endpoints =>
             {
-                  //Default Route
-                   endpoints.MapControllerRoute(
-                       name: "default",
-                        pattern: "{controller=Home}/{action=Index}/{id?}");
 
                 //Consumer Route
                 endpoints.MapAreaControllerRoute(
                     name: "Consumer",
                     areaName: "Consumer",
-                    pattern: "{controller=Consumers}/{action=Index}/{id?}");
+                    pattern: "Consumer/{controller=Consumers}/{action=Index}/{id?}");
 
 
                 //Shop Owner Route
                 endpoints.MapAreaControllerRoute(
                     name: "Shop",
                     areaName: "Shop",
-                    pattern: "{controller=Shops}/{action=Index}/{id?}");
+                    pattern: "Shop/{controller=Shops}/{action=Index}/{id?}");
 
                 //SiteAdmin Route
                 endpoints.MapAreaControllerRoute(
                     name: "SiteOwner",
                     areaName: "SiteAdmin",
-                    pattern: "{controller=SiteOwners}/{action=Index}/{id?}");
+                    pattern: "SiteAdmin/{controller=SiteOwners}/{action=Index}/{id?}");
 
+
+
+                //Default Route
+                endpoints.MapControllerRoute(
+                    name: "default",
+                     pattern: "{controller=Home}/{action=Index}/{id?}");
 
                 //Web API Exposure
                 endpoints.MapControllers();

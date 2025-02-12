@@ -11,8 +11,8 @@ using System.Threading.Tasks;
 
 namespace MagicSite.Controllers
 {
-    [Route("api/[controller]/[action]")]
-    [ApiController]
+    //[Route("api/[controller]/[action]")]
+    //[ApiController]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -128,6 +128,23 @@ namespace MagicSite.Controllers
         public IActionResult Privacy()
         {
             return View();
+        }
+
+
+        //Routung happens here
+        [HttpGet]
+        public IActionResult direcctions(string ID)
+        {
+            switch (ID)
+            {
+                case "1": return RedirectToAction("Index", "Consumers", new {Area = "Consumer" });
+
+                case "2": return RedirectToActionPermanent("Index", "Shops", new { Area = "Shop" });
+
+                case "3": return RedirectToAction("Index", "SiteOwners", new { Area = "SiteAdmin" });
+            }
+
+            return Content("No Selection made");
         }
 
         [HttpGet]
