@@ -59,6 +59,15 @@ button.accept-policy {
     box-shadow: 0 .25rem .75rem #b6b6cb52;
     height: fit-content;
 }
+
+.Search-Bar {
+    margin-left: auto;
+    width: inherit;
+}
+
+.Search-Button {
+    margin-right: -5px;
+}
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
