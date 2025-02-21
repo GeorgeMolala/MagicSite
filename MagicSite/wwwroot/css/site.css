@@ -51,11 +51,19 @@ button.accept-policy {
   line-height: inherit;
 }
 
+/*My Custom Styling */
+.block-head {
+    background-color: mediumaquamarine;
+    width: 100%;
+    border-radius: 0.1rem;
+    box-shadow: 0 .25rem .75rem #b6b6cb52;
+    height: fit-content;
+}
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
