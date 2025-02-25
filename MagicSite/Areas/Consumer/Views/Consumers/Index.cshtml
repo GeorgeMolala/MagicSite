@@ -5,31 +5,33 @@
 }
 
 
-  <div class="form-control col-12 block-head">
-            <div class="form-row">
+<div class="form-control col-12 block-head">
+    <div class="form-row">
 
-                <span class="">Magic Site</span>
-                <div class="Search-Bar">
-                    <button type="button" asp-action="Search" class="Search-Button">Search </button>
-                    <input type="text" id="SearchField" class="Search-Box col-9" />
+        <span class="">Magic Site</span>
+        <div class="Search-Bar">
+            <button type="button" asp-action="Search" class="Search-Button">Search </button>
+            <input type="text" id="SearchField" class="Search-Box col-9" />
 
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Departments
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" onmouseover="KidsMenu()" href="#" id="dropdownKids">Kids</a>
-                            <a class="dropdown-item" onmouseover="MenMenu()" href="#" id="dropdownMen">Men</a>
-                            <a class="dropdown-item" onmouseover="LadiesMenu()" href="#" id="dropdownLadies">Ladies</a>
-                        </div>
-                   
-                    </div>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Departments
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" onmouseover="KidsMenu()" href="#" id="dropdownKids">Kids</a>
+                    <a class="dropdown-item" onmouseover="MenMenu()" href="#" id="dropdownMen">Men</a>
+                    <a class="dropdown-item" onmouseover="LadiesMenu()" href="#" id="dropdownLadies">Ladies</a>
                 </div>
-            </div>
-  </div>
 
-<div class="Department-Menu form-control" id="Department-Menu-Id" hidden="hidden" onmouseout="KidsMenuClose()">
-    <div class="form-row" >
+            </div>
+        </div>
+    </div>
+</div>
+
+    @* Return this hidden attribute below hidden="hidden"  *@
+
+<div class="Department-Menu form-control" id="Department-Menu-Id" onmouseout="KidsMenuClose()">
+    <div class="form-row">
         <div class="subhead-Menu d-inline-flex " onmouseover="KidsMenu()">
             <a href="" class="pr-4 col-4">Featured</a>
             <a href="" class="pr-4 col-4">Shoes</a>
@@ -37,19 +39,42 @@
             <a href="" class="pr-4 col-4">Assessories</a>
         </div>
     </div>
+
+    <div class="form-row">
+        <div class="subhead-Menu-child d-inline-flex">
+            <a href="" class="list-inline-item pr-4 col-4">Test 1</a>
+
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="subhead-Menu-child d-inline-flex">
+            <a href="" class="list-inline-item pr-4 col-4">Test 2</a>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="subhead-Menu-child d-inline-flex">
+            <a href="" class="list-inline-item pr-4 col-4">Test 3</a>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="subhead-Menu-child d-inline-flex">
+            <a href="" class="list-inline-item pr-4 col-4">Test 2</a>
+        </div>
+    </div>
 </div>
 
 
-<script>
-    function KidsMenu()
-    {
+@*<script>
+    function KidsMenu() {
         var lele = document.getElementById("Department-Menu-Id");
         lele.hidden = false;
     }
 
-    function KidsMenuClose()
-    {
+    function KidsMenuClose() {
         var lele = document.getElementById("Department-Menu-Id");
         lele.hidden = true;
     }
-</script>
+</script>*@
