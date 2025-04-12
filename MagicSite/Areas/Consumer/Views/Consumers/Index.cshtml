@@ -5,26 +5,12 @@
 }
 
 
+
 <div class="form-control col-12 block-head">
     <div class="form-row">
 
-        <span class="">Magic Site</span>
-        <div class="Search-Bar">
-            <button type="button" asp-action="Search" class="Search-Button">Search </button>
-            <input type="text" id="SearchField" class="Search-Box col-9" />
 
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Departments
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" onmouseover="KidsMenu()" href="#" id="dropdownKids">Kids</a>
-                    <a class="dropdown-item" onmouseover="MensMenu()" href="#" id="dropdownMen">Men</a>
-                    <a class="dropdown-item" onmouseover="WomensMenu()" href="#" id="dropdownLadies">Ladies</a>
-                </div>
 
-            </div>
-        </div>
     </div>
 </div>
 
@@ -1052,27 +1038,51 @@
     </div>
 </div>
 
+<div class="Introduction-Section">
+    <div class="Introduction-Section-Images">
+
+        <div class="background-images">
+
+        </div>
+
+    </div>
+
+</div>
+
+<script type="module">
+    import IntroImage from '/js/IntroImages.js';
+
+    const container = document.getElementById('background-images');
+
+    IntroImage.forEach(item => {
+        const img = document.createElement('img');
+        img.src = item.image;
+        img.alt = "Sneaker";
+        img.className = "sneaker-img";
+        container.appendChild(img);
+</script>
+
 <script>
-        function KidsMenu() {
-            var lele = document.getElementById("Department-Menu-Id");
-            var lelMen = document.getElementById("Department-Men-Menu-Id");
-            var lelWomen = document.getElementById("Department-Women-Menu-Id");
+    function KidsMenu() {
+        var lele = document.getElementById("Department-Menu-Id");
+        var lelMen = document.getElementById("Department-Men-Menu-Id");
+        var lelWomen = document.getElementById("Department-Women-Menu-Id");
 
-            try {
-                lelWomen.hidden = true;
-                lelMen.hidden = true;
-                lele.hidden = false;
-            }
-            catch {
-
-            }
+        try {
+            lelWomen.hidden = true;
+            lelMen.hidden = true;
+            lele.hidden = false;
+        }
+        catch {
 
         }
 
-        function KidsMenuClose() {
-            var lele = document.getElementById("Department-Menu-Id");
-            lele.hidden = true;
-        }
+    }
+
+    function KidsMenuClose() {
+        var lele = document.getElementById("Department-Menu-Id");
+        lele.hidden = true;
+    }
 
     /*Men Menu hiding Functions*/
 
@@ -1105,12 +1115,12 @@
         var lelWomen = document.getElementById("Department-Women-Menu-Id")
 
         try {
-            lelKids.hidden = true;           
+            lelKids.hidden = true;
             lele.hidden = true;
             lelWomen.hidden = false;
         }
         catch {
-            
+
         }
 
     }
@@ -1120,4 +1130,4 @@
         lele.hidden = true;
     }
 
-    </script>
+</script>
