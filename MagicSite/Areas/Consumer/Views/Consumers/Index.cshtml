@@ -1038,33 +1038,98 @@
     </div>
 </div>
 
-<div class="Introduction-Section">
-    <div class="Introduction-Section-Images">
+<section class="Intro-Header">
+    <div class="Introduction-Section">
+        <div class="Introduction-Section-Images">
 
-        <div class="background-img" id="background-images">
-            <div>
+            <div class="background-img" id="background-images">
+                <div class="Image-Sizing" id="image-sizing">
+                    <span>Unleashing the power of movement with Confidence</span>
+                </div>
+            </div>
 
+        </div>
+
+    </div>
+</section>
+
+<section class="Shopping-Highlights" id="Shopping-Highlights">
+
+    <div class="Shop-Section-Head">
+        <div class="Product-Highlights row">
+            <div class="card col-4">
+                <img src="/CardHighlights/FemaleModel.jpg" />
+
+                <div class="card-body">
+                    <button>
+                        Shop
+                    </button>
+                </div>
+            </div>
+
+            <div class="card col-4">
+                <img src="/CardHighlights/MaleModel.jpg" />
+
+                <div class="card-body">
+                    <button>
+                        Shop
+                    </button>
+                </div>
+            </div>
+
+            <div class="card col-4">
+                <img src="/CardHighlights/KidModel.jpg" />
+
+                <div class="card-body">
+                    <button>
+                        Shop
+                    </button>
+                </div>
             </div>
         </div>
 
     </div>
 
-</div>
+</section>
 
 
 <script type="module">
     fetch('/Data/IntroImages.json')
         .then(res => res.json())
         .then(data => {
-            const container = document.getElementById('background-images');
-            console.log(container);
-            data.forEach(item => {
+
+            const container = document.getElementById("image-sizing")
+
+            const images = data.map(item => {
+
                 const img = document.createElement('img');
                 img.src = item.image;
                 img.alt = "Sneaker";
-                img.className = "sneaker-img";
+                img.className = "sneaker-img col-12";
+                img.style.display = 'none'; // Hide all images initially
                 container.appendChild(img);
+                return img;
+
             });
+
+            // Start with the first image visible
+            let currentIndex = 0;
+            if (images.length > 0) {
+                images[currentIndex].style.display = 'block';
+            }
+
+            // Set up the slideshow timer
+            setInterval(() => {
+                // Hide current image
+                images[currentIndex].style.display = 'none';
+
+                // Move to next image (loop back to 0 if at end)
+                currentIndex = (currentIndex + 1) % images.length;
+
+                // Show next image
+                images[currentIndex].style.display = 'block';
+            }, 3000); // 2000ms = 2 seconds
+            
         });
 </script>
 <script>

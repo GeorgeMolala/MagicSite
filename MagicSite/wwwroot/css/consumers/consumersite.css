@@ -73,6 +73,15 @@ th > a, & td > a {
     color: black;
 }
 
+/*My Custom Styling Catchy-Images */
+.sneaker-img {
+    /*    height: 75vh;
+    width: 95vw;*/
+    padding-left: 0px;
+    padding-right: 0px;
+    transition: opacity 0.5s ease-in-out;
+}
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
