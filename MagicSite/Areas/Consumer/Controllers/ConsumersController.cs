@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using MagicSite.Data.UnitOfWork;
 using MagicSite.Models;
+using Microsoft.Extensions.Configuration;
 
 namespace MagicSite.Areas.Consumer.Controllers
 {
@@ -16,10 +17,12 @@ namespace MagicSite.Areas.Consumer.Controllers
     {
 
         private readonly IUnitOfWork _unit;
+        private readonly IConfiguration _config;
 
-        public ConsumersController(IUnitOfWork unit)
+        public ConsumersController(IUnitOfWork unit, IConfiguration config)
         {
             _unit = unit;
+            _config = config;
         }
 
 

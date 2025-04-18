@@ -99,6 +99,7 @@ namespace MagicSite.Controllers
 
             var resp = await _unit.ProdImage.GetAllByID(ID);
 
+           // return Json(resp);
             return  View(resp.ToList());
         } 
     }

@@ -1044,7 +1044,24 @@
 
             <div class="background-img" id="background-images">
                 <div class="Image-Sizing" id="image-sizing">
-                    <span>Unleashing the power of movement with Confidence</span>
+                    <div class="Catchy-Phrase">
+                        <div class="Catchy-Phrase-Support2">
+                            <span>Unleashing</span>
+                        </div>
+                        <div class="Catchy-Phrase-Support1">
+                            <span>
+                                The Power of movement with Confidence.
+                            </span>
+                        </div>
+
+                        <div class="Catchy-Shop-Button">
+                            <a class="button-styling" href="#">Shop</a>
+                        </div>
+                    </div>
+
+                    
+
+                    
                 </div>
             </div>
 
@@ -1056,11 +1073,24 @@
 <section class="Shopping-Highlights" id="Shopping-Highlights">
 
     <div class="Shop-Section-Head">
+
+        <div class="Gategory-Section row">
+            <span class="col-5">
+                Shop Categories
+            </span>
+        </div>
+
         <div class="Product-Highlights row">
 
-            <div class="card col-3">
+            <div class="card col-4">
                 <img src="/CardHighlights/FemaleModel.jpg" />
 
+                <div class="card-catergory">
+                    <span>
+                        Shop Women
+                    </span>
+                </div>
+
                 <div class="card-body">
                     <button>
                         Shop
@@ -1068,9 +1098,15 @@
                 </div>
             </div>
 
-            <div class="card col-3">
+            <div class="card col-4">
                 <img src="/CardHighlights/MaleModel.jpg" />
 
+                <div class="card-catergory">
+                    <span>
+                        Shop Men
+                    </span>
+                </div>
+
                 <div class="card-body">
                     <button>
                         Shop
@@ -1078,8 +1114,14 @@
                 </div>
             </div>
 
-            <div class="card col-3">
+            <div class="card col-4">
                 <img src="/CardHighlights/KidModel.jpg" />
+
+                <div class="card-catergory">
+                    <span>
+                        Shop Kids
+                    </span>
+                </div>
 
                 <div class="card-body">
                     <button>
@@ -1093,23 +1135,47 @@
 
 </section>
 
+<section id="Hot-Products" class="Hot-Products-Section">
+    <div class="Hot-Products-Section-Head">
+
+        <div class="Hot-Products-Section-Title">
+            <span class="Hot-Section-Catchy-Phrase-Title">Hot Products</span>
+        </div>
+
+        <div class="Hot-Products-Section-Catalogue">
+            <div class="card">
+
+            </div>
+        </div>
+
+    </div>
+
+</section>
 
 <script type="module">
     fetch('/Data/IntroImages.json')
         .then(res => res.json())
         .then(data => {
 
-            const container = document.getElementById("image-sizing")
+            const container = document.getElementById("image-sizing");
 
             const images = data.map(item => {
+                // Create a wrapper div
+                const wrapper = document.createElement('div');
+                wrapper.className = 'sneaker-wrapper col-12';
+                wrapper.style.display = 'none'; // Hide all initially
 
+                // Create the image
                 const img = document.createElement('img');
                 img.src = item.image;
                 img.alt = "Sneaker";
-                img.className = "sneaker-img col-12";
-                img.style.display = 'none'; // Hide all images initially
-                container.appendChild(img);
-                return img;
+                img.className = "sneaker-img";
+
+                // Append image to wrapper, then wrapper to container
+                wrapper.appendChild(img);
+                container.appendChild(wrapper);
+
+                return wrapper; // Store the wrapper, not the image
 
             });
 
