@@ -1,4 +1,6 @@
-﻿using MagicSite.Data.UnitOfWork;
+﻿using Amazon.S3;
+using Amazon.S3.Model;
+using MagicSite.Data.UnitOfWork;
 using MagicSite.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -17,11 +19,14 @@ namespace MagicSite.Controllers
     {
         private readonly IUnitOfWork _unit;
         private readonly IConfiguration _config;
+        private readonly IAmazonS3 _client;
+        private string Bucketname { get; set; } = "rossettestorage-1";
 
-        public PicturesController(IUnitOfWork unit, IConfiguration config)
+        public PicturesController(IUnitOfWork unit, IConfiguration config, IAmazonS3 client)
         {
             _unit = unit;
             _config = config;
+            _client = client;
         }
 
 
@@ -31,12 +36,15 @@ namespace MagicSite.Controllers
             return View();
         }
 
+
         [IgnoreAntiforgeryToken]
         [HttpPost]
         public async Task<ActionResult> AddImage(Prod_ImageTbl ProImage)
         {
 
-            var MaxSize = _config.GetValue<long>("ImageUploads:AllowedMaxSize");
+            try
+            {
+           var MaxSize = _config.GetValue<long>("ImageUploads:AllowedMaxSize");
             var l1 = _config["ImageUploads: AllowedMaxSize"];
             
             //Checking if variable is not empty basically it is validation.
@@ -64,31 +72,50 @@ namespace MagicSite.Controllers
             }
 
 
-
-            //Prepare URL
-            // var uploadPath = Path.Combine(_config[""])
-            var UploadPath = "wwwroot/"+_config["ImageUploads:UploadPathMenShoes"];
-
             //Generate unique name
-            var UniqueName = Guid.NewGuid().ToString() +ProImage.Form.FileName + GetExtention;
-            var filePath = Path.Combine(UploadPath, UniqueName);
+            var UniqueName = Guid.NewGuid().ToString("D").Substring(0, 8) + ProImage.Form.FileName + ProImage.Form.ContentType;
+            //var filePath = Path.Combine(UploadPath, UniqueName);
 
             var file = ProImage.Form;
-            //uploading image
-            using (var stream = new FileStream(filePath, FileMode.Create))
+            string paths = "Shoes";
+            var objectToPut = new PutObjectRequest()
             {
-                await file.CopyToAsync(stream);
+                BucketName = "rossettestorage-1",
+                Key = $"{paths}/{UniqueName}",
+                InputStream = ProImage.Form.OpenReadStream()
+
+            };
+
+            var response = await _client.PutObjectAsync(objectToPut);
+
+            var imageUrl = $"https://{objectToPut.BucketName}.s3.amazonaws.com/{paths}/{UniqueName}";
+
+                ProImage.ImageName = $"{paths}/{UniqueName}";
+                ProImage.Image_Url = imageUrl;
+                ProImage.Prod_Image_ID = 4;
+            }
+            catch (AmazonS3Exception ex)
+            {
+                return StatusCode(500, "Upload failed. Please try again.");
             }
 
 
-            //Uploading details to Database
-            var storageURL = Path.Combine(_config["ImageUploads:UploadPathMenShoes"], UniqueName);
-            ProImage.Image_Url = storageURL;
 
-           // ProImage.Prod_Image_ID = 4;
-            var resp = _unit.ProdImage.Add(ProImage);
-           
-            return Ok();
+
+            //Saving Data To DataBase
+
+            try {
+                var resp = _unit.ProdImage.Add(ProImage);
+                return Ok(resp);
+            }
+            catch
+            {
+                return StatusCode(500);
+            }
+
+            
+
+            
         }
 
         [IgnoreAntiforgeryToken]

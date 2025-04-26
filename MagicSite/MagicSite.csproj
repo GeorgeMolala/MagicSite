@@ -10,6 +10,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.7.400" />
+    <PackageReference Include="AWSSDK.S3" Version="3.7.416.14" />
     <PackageReference Include="Dapper" Version="2.0.4" />
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.0" />
@@ -38,6 +40,7 @@
     <Folder Include="Areas\Consumer\Data\" />
     <Folder Include="Areas\Shop\Data\" />
     <Folder Include="Areas\SiteAdmin\Data\" />
+    <Folder Include="Data\ExternalDataCom\" />
     <Folder Include="wwwroot\AppImages\Adults\Ladies\" />
     <Folder Include="wwwroot\AppImages\Adults\Men\Shoes\" />
     <Folder Include="wwwroot\AppImages\Kids\" />

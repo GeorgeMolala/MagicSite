@@ -42,6 +42,7 @@ namespace MagicSite
             services.AddControllersWithViews();
             services.AddControllers();
             services.AddSingleton<DataBaseConnection>();
+            services.AddDefaultAWSOptions(Configuration.GetAWSOptions());
             services.AppService();
             services.AddSwaggerGen(c =>
             {
