@@ -30,15 +30,18 @@ namespace MagicSite.Data.Repositories.DataRepository
 
 
             var parameters = new DynamicParameters();
-            parameters.Add("Prod_ID", entity.Prod_ID, DbType.Int32);
+          //  parameters.Add("Prod_ID", entity.Prod_ID, DbType.Int32);
             parameters.Add("ProdName", entity.ProdName, DbType.String);
             parameters.Add("ProdDescription", entity.ProdDescription, DbType.String);
             parameters.Add("ProdPrice", entity.ProdPrice, DbType.Double);
             parameters.Add("Cat_ID", entity.Cat_ID, DbType.Int32);
-            parameters.Add("ProdSize", entity.ProdSize, DbType.String);
             parameters.Add("Color_ID", entity.Color_ID, DbType.Int32);
             parameters.Add("Brand_ID", entity.Brand_ID, DbType.Int32);
             parameters.Add("Status", entity.Status = "Active", DbType.String);
+            parameters.Add("Gender", entity.Gender, DbType.String);
+            parameters.Add("CoverName", entity.CoverName, DbType.String);
+            parameters.Add("CoverURL", entity.CoverURL, DbType.String);
+
 
             using (var connection = _con.CreateConnection())
             {
@@ -138,6 +141,7 @@ namespace MagicSite.Data.Repositories.DataRepository
             parameters.Add("Color_ID", entity.Color_ID, DbType.Int32);
             parameters.Add("Brand_ID", entity.Brand_ID, DbType.Int32);
             parameters.Add("Status", entity.Status = "Active", DbType.String);
+            parameters.Add("Gender", entity.Gender, DbType.String);
 
             using (var connection = _con.CreateConnection())
             {

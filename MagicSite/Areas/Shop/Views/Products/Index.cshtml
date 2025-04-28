@@ -3,20 +3,139 @@
 *@
 @{
 }
-
+@model ProductTbl
 <h1>
     Products
 </h1>
 <br/>
 
 <section id="Section-Body">
-    <button>Add</button>
 
-    <div class="Modal-PopUp-AddingProduct">
 
-        <form method="post" >
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddingProducts">Add</button>
 
-        </form>
+    <form method="post" asp-action="AddProduct" asp-area="Shop" enctype="multipart/form-data">
+        <div class="Modal-PopUp-AddingProduct">
 
-    </div>
+
+
+            <div class="modal fade" id="AddingProducts" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Add Products</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="Input-body">
+                                <div class="row">
+                                    <div class="form-group col-6">
+                                        <br />
+                                        <label for="ProductName1">Product Name</label>
+                                        <input class="form-control" asp-for="ProdName" type="text" placeholder="Prodcut Name" id="ProductName1" />
+                                    </div>
+
+                                    <div class="form-group col-6">
+                                        <br />
+                                        <label for="PrdouctPrice1">Price</label>
+                                        <input type="number" asp-for="ProdPrice" class="form-control" placeholder="Product Price" id="PrdouctPrice1" />
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-6">
+                                        <br />
+                                        <label for="Category1">Category</label>
+                                        <select asp-for="Cat_ID" class="form-control" id="Category1">
+                                            <option selected>Choose...</option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group col-6">
+                                        <br />
+                                        <label for="Brand1">Brand</label>
+                                        <select asp-for="Brand_ID" class="form-control" id="Brand1">
+                                            <option selected>Choose...</option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                        </select>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-4">
+                                        <br />
+                                        <label for="Color1">Color</label>
+                                        <select asp-for="Color_ID" class="form-control" id="Color1">
+                                            <option selected>Choose...</option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group col-4">
+                                        <br />
+                                        <label for="Gender1">Gender</label>
+                                        <select asp-for="Gender" class="form-control" id="Gender1">
+                                            <option selected>Choose...</option>
+                                            <option>Male</option>
+                                            <option>Female</option>
+                                            <option>Unisex</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group col-4">
+                                        <br />
+                                        <label for="AgeGroup1">Age Group</label>
+                                        <select asp-for="AgeGroup" class="form-control" id="AgeGroup1">
+                                            <option selected>Choose...</option>
+                                            <option>Kids</option>
+                                            <option>Adult</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-12 section-description">
+                                        <br />
+                                        <label asp-for="ImageFile">Cover Image</label>
+                                        <input type="file" asp-for="ImageFile" multiple class="form-control-file" />
+                                    </div>
+
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-12 section-description">
+                                        <br />
+                                        <textarea class="form-control" asp-for="ProdDescription" placeholder="Product Description"></textarea>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-outline-primary">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </form>
 </section>

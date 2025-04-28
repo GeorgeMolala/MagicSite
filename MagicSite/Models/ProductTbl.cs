@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace MagicSite.Models
 
         public int Cat_ID { get; set; }
 
-
+        public string AgeGroup { get; set; }
         public string ProdSize { get; set; }
 
         public int Color_ID { get; set; }
@@ -28,6 +29,16 @@ namespace MagicSite.Models
 
         public string Status { get; set; }
 
+        public string CoverName { get; set; }
+
+        public string CoverURL { get; set; }
+
+        public IFormFile ImageFile { get; set; }
+
+        public string Gender { get; set; }
+
+
+        public ProductHighlights ProductHighlights { get; set; }
 
     }
 }
