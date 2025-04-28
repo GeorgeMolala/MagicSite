@@ -13,6 +13,8 @@ namespace MagicSite.Data.UnitOfWork
 
         IBrand Brand { get; }
 
+        IViewProductHigh ViewProductHigh {get; }
+
         ICategory Category { get; }
 
         IColor Color { get; }
