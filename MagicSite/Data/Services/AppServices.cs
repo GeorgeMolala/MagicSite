@@ -24,6 +24,7 @@ namespace MagicSite.Data.Services
             service.AddTransient<IProdImage, ProductImage>();
             service.AddTransient<IUnitOfWork, UnitOfWorkHelper>();
             service.AddAWSService<IAmazonS3>();
+            service.AddTransient<IViewProductHigh, ViewProductHigh>();
 
 
         }

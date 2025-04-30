@@ -1,5 +1,5 @@
 ﻿
-@model List<ProductHighlights>
+@model List<ViewProductHighLights>
 
 
 
@@ -1132,17 +1132,31 @@
             <span class="Hot-Section-Catchy-Phrase-Title">Hot Products</span>
         </div>
 
-        <div class="Hot-Products-Section-Catalogue">
+        <div class="Hot-Products-Section-Catalogue row">
 
-            <div class="row">
+            @{
+                foreach (var prod in Model)
+                {
+                    <div class="card col-4">
+                        <img class="Product-Image" src="@prod.CoverURL" />
 
-                <div class="card">
-                    <div class="card-body">
-                        
+                        <div class="card-body">
+                            <div class="Product-Name row">
+                                <span>@prod.ProdName</span>
+                            </div>
+
+                            <div class="Product-Brand row">
+                                <span>@prod.Name</span>
+                            </div>
+                            <div class="Product-Price row">
+                                <span>@prod.ProdPrice</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
 
-            </div>
+                }
+
+            }
 
         </div>
 

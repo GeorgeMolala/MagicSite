@@ -18,13 +18,16 @@ namespace MagicSite.Data.UnitOfWork
 
         public IProdImage ProdImage { get; set; }
 
-        public UnitOfWorkHelper(IBrand brand, IProduct product, ICategory category, IColor color, IProdImage image)
+        public IViewProductHigh ViewProductHigh { get; set; }
+
+        public UnitOfWorkHelper(IBrand brand, IProduct product, ICategory category, IColor color, IProdImage image, IViewProductHigh productHigh)
         {
             Products = product;
             Brand = brand;
             Category = category;
             Color = color;
             ProdImage = image;
+            ViewProductHigh = productHigh;
 
         }
 

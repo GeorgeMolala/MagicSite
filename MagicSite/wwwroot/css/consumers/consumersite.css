@@ -198,6 +198,14 @@ th > a, & td > a {
     padding-bottom: 15px;
 }
 
+.Hot-Products-Section-Title {
+    margin-top: 6%;
+    margin-bottom: 3%;
+    font-size: 2.5vw;
+    font-style: oblique;
+    font-family: fantasy;
+}
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {

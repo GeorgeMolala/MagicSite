@@ -13,6 +13,7 @@ namespace MagicSite.Models.ViewModels
     public class ViewModelProductHighLights
     {      
         public List<ViewProductHighLights> products { get; set; }
+        
 
         private readonly IUnitOfWork _unit;
         private readonly IConfiguration _config;
@@ -28,9 +29,11 @@ namespace MagicSite.Models.ViewModels
 
         public async Task<ActionResult<ViewModelProductHighLights>> GetProducts()
         {
-            products = await _unit.ViewProductHigh.GetAll();
+            var res = await _unit.ViewProductHigh.GetAll();
 
-            return res.ToList();
+            this.products = res.ToList();
+
+            return this;            
         }
 
 

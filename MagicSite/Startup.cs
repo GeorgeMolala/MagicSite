@@ -1,3 +1,4 @@
+using Amazon.S3;
 using MagicSite.Data;
 using MagicSite.Data.Services;
 using Microsoft.AspNetCore.Builder;
@@ -43,6 +44,7 @@ namespace MagicSite
             services.AddControllers();
             services.AddSingleton<DataBaseConnection>();
             services.AddDefaultAWSOptions(Configuration.GetAWSOptions());
+            
             services.AppService();
             services.AddSwaggerGen(c =>
             {

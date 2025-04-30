@@ -27,11 +27,34 @@ namespace MagicSite.Areas.Consumer.Controllers
 
 
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            try
+            {
+                var res = await _unit.ViewProductHigh.GetAll();
+                return View(res.ToList());
+            }
+            catch
+            {
+                new ApplicationException("Something went wrong");
+                return StatusCode(500);
+            }
+
         }
 
+        
+        //public async Task<ActionResult<IEnumerable<ProductHighlights>>> MyProductHighLights()
+        //{
+        //    try
+        //    {
+        //        var resp = await _unit.ViewProductHigh.GetAll();
+        //    }
+        //    catch
+        //    {
+        //        new ApplicationException("Something went wrong");
+        //        return StatusCode(500);
+        //    }
+        //}
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ProductTbl>>> MyProductsList()
