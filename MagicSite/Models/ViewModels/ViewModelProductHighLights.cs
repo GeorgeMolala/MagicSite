@@ -12,7 +12,8 @@ namespace MagicSite.Models.ViewModels
 {
     public class ViewModelProductHighLights
     {      
-        public List<ViewProductHighLights> products { get; set; }
+        public IEnumerable<ViewProductHighLights> products { get; set; }
+        public IEnumerable<BrandTbl> Brands { get; set; }
         
 
         private readonly IUnitOfWork _unit;

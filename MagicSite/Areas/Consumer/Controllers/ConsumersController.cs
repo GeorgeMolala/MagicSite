@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using MagicSite.Data.UnitOfWork;
 using MagicSite.Models;
 using Microsoft.Extensions.Configuration;
+using MagicSite.Models.ViewModels;
 
 namespace MagicSite.Areas.Consumer.Controllers
 {
@@ -65,6 +66,13 @@ namespace MagicSite.Areas.Consumer.Controllers
                 var resp = await _unit.Products.GetAll();
 
                 return View(resp.ToList());
+
+                //var resp = await new ViewModelProductHighLights
+                //{
+                //    products = await _unit.ViewProductHigh.GetAll()
+                //};
+
+                //return resp.ToList();
             }
             catch
             {

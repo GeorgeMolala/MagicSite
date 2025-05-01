@@ -1081,7 +1081,7 @@
                     </span>
                 </div>
 
-                <div class="card-body">
+                <div class="Shopping-Highlights-button">
                     <button>
                         Shop
                     </button>
@@ -1097,7 +1097,7 @@
                     </span>
                 </div>
 
-                <div class="card-body">
+                <div class="Shopping-Highlights-button">
                     <button>
                         Shop
                     </button>
@@ -1113,7 +1113,7 @@
                     </span>
                 </div>
 
-                <div class="card-body">
+                <div class="Shopping-Highlights-button">
                     <button>
                         Shop
                     </button>
@@ -1129,7 +1129,7 @@
     <div class="Hot-Products-Section-Head">
 
         <div class="Hot-Products-Section-Title">
-            <span class="Hot-Section-Catchy-Phrase-Title">Hot Products</span>
+            <span class="Hot-Section-Catchy-Phrase-Title">Trending Icons</span>
         </div>
 
         <div class="Hot-Products-Section-Catalogue row">
@@ -1137,31 +1137,58 @@
             @{
                 foreach (var prod in Model)
                 {
-                    <div class="card col-4">
+                    <div class="card col-2">
                         <img class="Product-Image" src="@prod.CoverURL" />
 
-                        <div class="card-body">
-                            <div class="Product-Name row">
-                                <span>@prod.ProdName</span>
-                            </div>
+                        <div class="Product-Highlights-Clickable">
+                            <a href="#" class="Product-Highlights-Clickable-Link">
 
-                            <div class="Product-Brand row">
-                                <span>@prod.Name</span>
-                            </div>
-                            <div class="Product-Price row">
-                                <span>@prod.ProdPrice</span>
-                            </div>
+                                <div class="Product-Highlights-Details">
+                                    <div class="Product-Name row">
+                                        <span class="col-11">@prod.ProdName</span>
+                                    </div>
+                                    <div class="Product-Price row">
+                                        <span class="col-11">R @prod.ProdPrice</span>
+
+                                    </div>
+                                </div>
+
+
+
+                            </a>
                         </div>
+
+
+
                     </div>
 
                 }
 
             }
 
+        <div class="Load-More-Products">
+            <br />
+            <br />
+
+
+            <a href="#"> View More..... </a>
+        </div>
+
+
         </div>
 
     </div>
 
+</section>
+
+<section id="Featured-Brands" class="Featured-Brands-Section">
+    <div class="Featured-Brands-Head">
+
+        <div class="">
+
+        </div>
+
+    </div>
 </section>
 
 <script type="module">
