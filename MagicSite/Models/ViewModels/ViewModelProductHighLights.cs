@@ -18,7 +18,11 @@ namespace MagicSite.Models.ViewModels
 
         private readonly IUnitOfWork _unit;
         private readonly IConfiguration _config;
-        
+
+        public ViewModelProductHighLights()
+        {
+
+        }
 
         public ViewModelProductHighLights(IUnitOfWork unit, IConfiguration config)
         {

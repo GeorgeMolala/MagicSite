@@ -231,6 +231,85 @@ th > a, & td > a {
     font-family: emoji;
 }
 
+.Featured-Brands-Head {
+    position: relative;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.Featured-Brands-Carousal {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+}
+
+.brand-card {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.slide.active {
+        opacity: 1;
+}
+
+.slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+}
+
+.brand-body {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    padding: 20px;
+}
+
+.slide-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.prev {
+    left: 0;
+}
+
+.next {
+    right: 0;
+}
+
+.slide-dots {
+    text-align: center;
+    padding: 10px;
+}
+
+.dot {
+    height: 15px;
+    width: 15px;
+    margin: 0 5px;
+    background: #bbb;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.dot.active {
+        background: #333;
+    }
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {

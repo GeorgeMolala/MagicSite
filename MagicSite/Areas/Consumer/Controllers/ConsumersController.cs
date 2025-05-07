@@ -32,9 +32,16 @@ namespace MagicSite.Areas.Consumer.Controllers
         {
             try
             {
-                var res = await _unit.ViewProductHigh.GetAll();
-                return View(res.ToList());
+                var res = new ViewModelProductHighLights
+                {
+                    Brands = await _unit.Brand.GetAll(),
+                    products = await _unit.ViewProductHigh.GetAll()
+                };
+
+                
+                return View(res);
             }
+
             catch
             {
                 new ApplicationException("Something went wrong");

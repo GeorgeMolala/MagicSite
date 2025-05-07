@@ -1,7 +1,10 @@
-﻿using MagicSite.Data.Repositories.Helper_Classes;
+﻿using Dapper;
+using MagicSite.Data.Repositories.Helper_Classes;
 using MagicSite.Models;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -9,6 +12,16 @@ namespace MagicSite.Data.Repositories.DataRepository
 {
     public class Brand : IBrand
     {
+
+        private readonly IConfiguration _config;
+        private readonly DataBaseConnection _con;
+
+        public Brand( IConfiguration config, DataBaseConnection con)
+        {
+            _con = con;
+            _config = config;
+        }
+
         public Task<int> Add(BrandTbl entity)
         {
             throw new NotImplementedException();
@@ -20,9 +33,22 @@ namespace MagicSite.Data.Repositories.DataRepository
         }
 
       
-        public Task<IEnumerable<BrandTbl>> GetAll()
+        public async Task<IEnumerable<BrandTbl>> GetAll()
         {
-            throw new NotImplementedException();
+            string StoredProcedureName = "GetAllBrands_PDO";
+
+            using (var connection = _con.CreateConnection())
+            {
+                connection.Open();
+
+                var res = await connection.QueryAsync<BrandTbl>(StoredProcedureName, commandType: CommandType.StoredProcedure);
+
+                connection.Close();
+
+
+                return res.ToList();
+
+            }
         }
 
         public Task<BrandTbl> GetByID(int ID)
