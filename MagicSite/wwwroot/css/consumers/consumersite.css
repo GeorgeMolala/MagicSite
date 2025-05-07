@@ -231,7 +231,62 @@ th > a, & td > a {
     font-family: emoji;
 }
 
+.slick-carousel {
+    margin: 0 auto;
+    width: 95%;
+}
 
+.brand-card {
+    padding: 0 1.5% 15px 0;
+}
+
+.slide-link {
+    display: block;
+    position: relative;
+    text-decoration: none;
+    color: inherit;
+}
+
+
+
+.slide-content {
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding-left: 30%;
+    padding-bottom: 15%;
+    padding-top: 13%;
+    border-bottom-left-radius: 10px;
+}
+
+.slide-content > span {
+        margin: 0 0 0 0;
+        font-size: 1.5vw;
+        font-weight: 500;
+}
+
+.slide-content p {
+        margin: 0;
+        font-size: 0.9em;
+}
+
+/* Slick overrides */
+.slick-prev:before, .slick-next:before {
+    color: #333;
+}
+
+.slick-dots li button:before {
+    font-size: 12px;
+}
+
+.Brands-Head {
+    margin-top: 8%;
+    margin-bottom: 1%;
+    font-size: 2.7vw;
+    font-style: oblique;
+    font-family: fantasy;
+    margin-left: 2.8%;
+}
 
 /* Sticky footer styles
 -------------------------------------------------- */

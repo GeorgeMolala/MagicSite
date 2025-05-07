@@ -1,8 +1,6 @@
 ﻿
 @model ViewModelProductHighLights
 
-
-
 @* Kids Menu  *@
 
 <div class="Department-Kids-Menu form-control" id="Department-Menu-Id" onmouseout="KidsMenuClose()" hidden="hidden">
@@ -1131,7 +1129,7 @@
             <span class="Hot-Section-Catchy-Phrase-Title">Trending Icons</span>
         </div>
 
-        <div data-slick="" class="row">
+        <div class="Hot-Products-Section-Catalogue row">
 
             @{
                 foreach (var prod in Model.products)
@@ -1185,22 +1183,23 @@
 <section id="Featured-Brands" class="Featured-Brands-Section">
     <div class="Featured-Brands-Head">
 
-        <div class="Featured-Brands-Carousal row" id="myCarousel">
+        <div class="Brands-Head">
+            <span>Featured Brands</span>
+        </div>
+
+        <div class="slick-carousel row" id="myCarousel">
 
             @foreach (var brand in Model.Brands)
             {
-            <div class="brand-card">
+                <div class="brand-card col-2">
                     <a href="#" class="slide-link">
-                       
-                        <div class="slide-content">
-                            <h3>@brand.Name</h3>                           
-                        </div>
-                    </a>          
-            </div>
-            }
 
-            <a class="slide-nav prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="slide-nav next" onclick="plusSlides(1)">&#10095;</a>
+                        <div class="slide-content">
+                            <span>@brand.Name</span>
+                        </div>
+                    </a>
+                </div>
+            }
 
         </div>
 
@@ -1326,5 +1325,23 @@
     }
 
 </script>
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script src="~/lib/slick/slick.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.slick-carousel').slick({
+            slidesToShow: 4,    // Show 3 slides at a time
+            slidesToScroll: 1,   // Scroll 1 slide at a time
+            autoplay: true,      // Auto-play
+            autoplaySpeed: 3000, // Auto-play change interval
+
+            arrows: true,        // Show navigation arrows
+            infinite: true,     // Infinite looping
+
+        });
+    });
+
+</script>
+@*<script src="/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/lib/slick-carousel/slick.min.js"></script>*@
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Then Slick -->
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
