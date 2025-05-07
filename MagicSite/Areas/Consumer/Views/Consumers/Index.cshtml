@@ -3,7 +3,6 @@
 
 
 
-
 @* Kids Menu  *@
 
 <div class="Department-Kids-Menu form-control" id="Department-Menu-Id" onmouseout="KidsMenuClose()" hidden="hidden">
@@ -1049,9 +1048,9 @@
                         </div>
                     </div>
 
-                    
 
-                    
+
+
                 </div>
             </div>
 
@@ -1132,7 +1131,7 @@
             <span class="Hot-Section-Catchy-Phrase-Title">Trending Icons</span>
         </div>
 
-        <div class="Hot-Products-Section-Catalogue row">
+        <div data-slick="" class="row">
 
             @{
                 foreach (var prod in Model.products)
@@ -1166,15 +1165,15 @@
 
 
 
-}
+            }
 
-        <div class="Load-More-Products">
-            <br />
-            <br />
+            <div class="Load-More-Products">
+                <br />
+                <br />
 
 
-            <a href="#"> View More..... </a>
-        </div>
+                <a href="#"> View More..... </a>
+            </div>
 
 
         </div>
@@ -1190,11 +1189,14 @@
 
             @foreach (var brand in Model.Brands)
             {
-                <div class="brand-card">
-                    <div class="brand-body">
-                        <span>@brand.Name</span>
-                    </div>
-                </div>
+            <div class="brand-card">
+                    <a href="#" class="slide-link">
+                       
+                        <div class="slide-content">
+                            <h3>@brand.Name</h3>                           
+                        </div>
+                    </a>          
+            </div>
             }
 
             <a class="slide-nav prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -1206,36 +1208,7 @@
 </section>
 
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-            const slides = document.querySelectorAll('.slide');
-            const dots = document.querySelectorAll('.dot');
-            let currentIndex = 0;
 
-            function showSlide(index) {
-                slides.forEach(slide => slide.classList.remove('active'));
-                dots.forEach(dot => dot.classList.remove('active'));
-
-                currentIndex = (index + slides.length) % slides.length;
-                slides[currentIndex].classList.add('active');
-                dots[currentIndex].classList.add('active');
-            }
-
-            document.querySelector('.next').addEventListener('click', () => showSlide(currentIndex + 1));
-            document.querySelector('.prev').addEventListener('click', () => showSlide(currentIndex - 1));
-
-            dots.forEach(dot => {
-                dot.addEventListener('click', () => showSlide(parseInt(dot.dataset.index)));
-            });
-
-            // Initialize
-            showSlide(0);
-
-            // Optional: Auto-advance every 5 seconds
-            setInterval(() => showSlide(currentIndex + 1), 5000);
-
-    })
-</script>
 
 <script type="module">
     fetch('/Data/IntroImages.json')
@@ -1281,7 +1254,7 @@
                 // Show next image
                 images[currentIndex].style.display = 'block';
             }, 3000); // 2000ms = 2 seconds
-            
+
         });
 </script>
 <script>
@@ -1353,3 +1326,5 @@
     }
 
 </script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/slick/slick.min.js"></script>
