@@ -232,8 +232,9 @@ th > a, & td > a {
 }
 
 .slick-carousel {
-    margin: 0 auto;
+    margin-left: 11%;
     width: 95%;
+    margin-top: 2%;
 }
 
 .brand-card {

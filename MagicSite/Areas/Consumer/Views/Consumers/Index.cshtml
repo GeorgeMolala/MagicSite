@@ -1189,7 +1189,7 @@
 
         <div class="slick-carousel row" id="myCarousel">
 
-            @foreach (var brand in Model.Brands)
+            @*@foreach (var brand in Model.Brands)
             {
                 <div class="brand-card col-2">
                     <a href="#" class="slide-link">
@@ -1199,7 +1199,7 @@
                         </div>
                     </a>
                 </div>
-            }
+            }*@
 
         </div>
 
@@ -1207,7 +1207,52 @@
 </section>
 
 
+<script type="module">
 
+    const brandData = @Json.Serialize(Model.Brands);
+    const container = document.getElementById('myCarousel');
+
+    const displaybrands = brandData.map(item => {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'brand-card col-2';
+        wrapper.style.display = 'none'; // Hide all initially
+
+        //Creating content link
+        const brandItemLink = document.createElement('a');
+        brandItemLink.className = 'slide-link';
+        brandItemLink.href = "#";
+
+        //creating content wrapper
+        const brandItemWrapper = document.createElement('div');
+        brandItemWrapper.className = 'slide-content';
+
+        //creating actual content
+        const brandItem = document.createElement('span');
+        brandItem.textContent = item.name;
+
+        brandItemWrapper.appendChild(brandItem);
+        brandItemLink.appendChild(brandItemWrapper);
+        wrapper.appendChild(brandItemLink);
+        container.appendChild(wrapper);
+
+
+        return wrapper;
+
+    })
+   
+
+    let itemIndex = 0;
+    const itemlength = displaybrands.length;
+
+    for (itemIndex; itemIndex <= 4; itemIndex++)
+    {
+        displaybrands[itemIndex].style.display = 'inline-block';
+    }
+
+
+
+
+</script>
 
 <script type="module">
     fetch('/Data/IntroImages.json')
